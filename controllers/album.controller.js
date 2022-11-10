@@ -11,6 +11,11 @@ const createAlbumForm = (req, res) => {
 const createAlbum = async (req, res) => {
     console.log(req.flash('error'));
     try {
+        if (!req.body.albumTitle) {
+            req.flash('error', 'Le titre de l\'album ne doit pas être vide.');
+            res.redirect('/albums/create');
+            return;
+        }
         await Album.create({
             title: req.body.albumTitle,
         });
