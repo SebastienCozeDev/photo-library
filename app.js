@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const albumRoute = require('./routes/album.routes');
 
 /**
  * Correspond au port d'écoute.
@@ -24,6 +25,8 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.render('album', { title: 'Album' });
 });
+
+app.use('/', albumRoute);
 
 app.use((req, res) => {
     res.status(404);
