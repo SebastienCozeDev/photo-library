@@ -1,6 +1,6 @@
 # Photo Library
 
-Ce projet consiste en la conception d'une photothèque à l'aide de Node.js avec le framework Express.js.
+Ce projet consiste en la conception d'une photothèque à l'aide de Node.js avec le framework Express.js. Le projet est structure en MVC (Models-Vues-Controller).
 
 ## Packages utilisés
 
