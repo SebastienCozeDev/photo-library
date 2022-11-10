@@ -1,4 +1,6 @@
 const express = require('express');
+const session = require('express-session');
+const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const path = require('path');
 const albumRoute = require('./routes/album.routes');
@@ -23,6 +25,17 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
+
+/**
+ * Configure spécifiquement express-session.
+ */
+app.set('trust proxy', 1);
+app.use(session({
+    secret: '824194ED2BE8EB31B32157FD84964',
+    resave: false,
+    saveUninitialized: true,
+}));
+app.use(flash());
 
 app.get('/', (req, res) => {
     res.render('album', { title: 'Album' });
