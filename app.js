@@ -18,6 +18,8 @@ mongoose.connect('mongodb://localhost/photo-library');
 /**
  * Configure l'application.
  */
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
