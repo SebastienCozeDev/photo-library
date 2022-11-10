@@ -37,10 +37,6 @@ app.use(session({
 }));
 app.use(flash());
 
-app.get('/', (req, res) => {
-    res.render('album', { title: 'Album' });
-});
-
 app.use('/', albumRoute);
 
 app.use((req, res) => {
