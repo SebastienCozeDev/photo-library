@@ -12,9 +12,11 @@ router.get('/albums', albumController.albums),
  */
 router.get('/albums/create', albumController.createAlbumForm);
 
-/**
- * Route qui traite le formulaire de création d'album.
- */
+ /**
+  * Route qui traite le formulaire de création d'album.
+  */
 router.post('/albums/create', albumController.createAlbum);
+
+router.get('/albums/:id', albumController.album);
 
 module.exports = router;
