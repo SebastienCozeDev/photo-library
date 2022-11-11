@@ -4,6 +4,12 @@ const path = require('path');
 const fs = require('fs');
 const rimraf = require('rimraf');
 
+/**
+ * Number maximum d'octets que peut prendre la taille d'une image.
+ * Ici, on est à 700Mo.
+ */
+const maxOctets = 734003200;
+
 const albums = catchAsync(async (req, res) => {
     const albums = await Album.find();
     res.render('albums', {
@@ -41,9 +47,19 @@ const addImage = catchAsync(async (req, res) => {
         res.redirect(`/albums/${idAlbum}`);
         return;
     }
+    if (image.size > maxOctets) {
+        req.flash('error', 'Le fichier est trop volumineux. Sa taille ne peut pas être plus grande que 70 Mo.');
+        res.redirect(`/albums/${idAlbum}`);
+        return;
+    }
     const imageName = image.name;
     const folderPath = path.join(__dirname, '../public/uploads', idAlbum);
     const localPath = path.join(folderPath, imageName);
+    if (fs.existsSync(localPath)) {
+        req.flash('error', 'Cette image est déjà présente dans l\'album.');
+        res.redirect(`/albums/${idAlbum}`);
+        return;
+    }
     fs.mkdirSync(folderPath, { recursive: true });
     await image.mv(localPath);
     objectAlbum.images.push(imageName);
