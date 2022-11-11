@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <%- include('partials/head') %>
+</head>
+
+<body>
+    <%- include('partials/nav') %>
+    <main>
+        <article class="container">
+            <div class="row mt-4">
+                <div class="col">
+                    <h2>Erreur <%= errorCode %> </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>
+                        <%= errorDescription %>
+                    </p>
+                </div>
+            </div>
+        </article>
+    </main>
+    <%- include('partials/scripts') %>
+</body>
+
+</html>
