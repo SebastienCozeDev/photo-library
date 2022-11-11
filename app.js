@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const fileUpload = require('express-fileupload');
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -22,6 +23,7 @@ mongoose.connect('mongodb://localhost/photo-library');
  */
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(fileUpload());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
