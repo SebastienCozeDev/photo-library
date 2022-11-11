@@ -91,6 +91,11 @@ const deleteImage = async (req, res) => {
     res.redirect(`/albums/${idAlbum}`);
 };
 
+const deleteAlbum = async (req, res) => {
+    const idAlbum = req.params.id;
+    await Album.findByIdAndDelete(idAlbum);
+};
+
 module.exports = {
     albums,
     album,
@@ -98,4 +103,5 @@ module.exports = {
     createAlbumForm,
     createAlbum,
     deleteImage,
+    deleteAlbum,
 };

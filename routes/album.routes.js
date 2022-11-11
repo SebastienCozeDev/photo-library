@@ -23,6 +23,11 @@ router.post('/albums/create', albumController.createAlbum);
 router.get('/albums/:id', albumController.album);
 
 /**
+ * Route qui traite la suppression d'un album.
+ */
+ router.get('/albums/:id/delete/:imageIndex', albumController.deleteAlbum);
+
+/**
  * Route qui traite la suppression d'une image.
  */
 router.get('/albums/:id/delete/:imageIndex', albumController.deleteImage);
