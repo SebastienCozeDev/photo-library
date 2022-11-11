@@ -24,6 +24,11 @@
                                 <input class="form-control-file" name="image" type="file">
                                 <button class="btn btn-primary mt-3" type="submit">Ajouter</button>
                             </form>
+                            <% if (errors.length) { %>
+                                <div class="alert alert-danger mt-4 mb-2" role="alert">
+                                    <%= errors[0] %> 
+                                </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>

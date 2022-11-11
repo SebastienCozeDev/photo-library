@@ -15,8 +15,9 @@ const album = async (req, res) => {
         const idAlbum = req.params.id;
         const objectAlbum = await Album.findById(idAlbum);
         res.render('album', {
-            title: 'Album',
+            title: objectAlbum.title,
             album: objectAlbum,
+            errors: req.flash('error'),
         });
     } catch (err) {
         console.log(err);
@@ -27,11 +28,22 @@ const album = async (req, res) => {
 const addImage = async (req, res) => {
     const idAlbum = req.params.id;
     const objectAlbum = await Album.findById(idAlbum);
-    const imageName = req.files.image.name;
+    if (!req?.files?.image) {
+        req.flash('error', 'Aucun fichier mis en ligne.');
+        res.redirect(`/albums/${idAlbum}`);
+        return;
+    }
+    const image = req.files.image;
+    if (image.mimetype != 'image/jpeg' && image.mimetype != 'image/png') {
+        req.flash('error', 'Seuls les fichiers JPEG et PNG sont accepté.');
+        res.redirect(`/albums/${idAlbum}`);
+        return;
+    }
+    const imageName = image.name;
     const folderPath = path.join(__dirname, '../public/uploads', idAlbum);
     const localPath = path.join(folderPath, imageName);
     fs.mkdirSync(folderPath, { recursive: true });
-    await req.files.image.mv(localPath);
+    await image.mv(localPath);
     objectAlbum.images.push(imageName);
     await objectAlbum.save();
     res.redirect(`/albums/${idAlbum}`);
