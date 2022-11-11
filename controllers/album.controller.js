@@ -37,7 +37,7 @@ const addImage = catchAsync(async (req, res) => {
     const idAlbum = req.params.id;
     const objectAlbum = await Album.findById(idAlbum);
     if (!req?.files?.image) {
-        req.flash('error', 'Aucun fichier mis en ligne.');
+        req.flash('error', 'Veuillez sélectionner un fichier.');
         res.redirect(`/albums/${idAlbum}`);
         return;
     }
