@@ -51,3 +51,23 @@ nav#header .btn-primary:hover {
 .form-control {
     background-color: #fffffe;
 }
+
+.footer {
+    background-color: #232946;
+    color: #b8c1ec;
+    margin-top: 3rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+.footer a {
+    color: #b8c1ec;
+}
+
+.footer a:hover {
+    color: #fffffe;
+}
+
+.footer .title {
+    color: #fffffe;
+}
