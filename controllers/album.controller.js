@@ -44,6 +44,11 @@ const addImage = catchAsync(async (req, res) => {
     const imageName = image.name;
     const folderPath = path.join(__dirname, '../public/uploads', idAlbum);
     const localPath = path.join(folderPath, imageName);
+    if (fs.existsSync(localPath)) {
+        req.flash('error', 'Cette image est déjà présente dans l\'album.');
+        res.redirect(`/albums/${idAlbum}`);
+        return;
+    }
     fs.mkdirSync(folderPath, { recursive: true });
     await image.mv(localPath);
     objectAlbum.images.push(imageName);
