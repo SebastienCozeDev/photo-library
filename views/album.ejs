@@ -15,6 +15,19 @@
                     <h2 class="mb-4"><%= album.title %> </h2>
                 </div>
             </div>
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Ajouter une image</h5>
+                            <form class="form-inline" method="POST" action="/albums/<%= album._id %> " enctype="multipart/form-data">
+                                <input class="form-control-file" name="image" type="file">
+                                <button class="btn btn-primary mt-3" type="submit">Ajouter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </article>
     </main>
     <%- include('partials/scripts') %>
