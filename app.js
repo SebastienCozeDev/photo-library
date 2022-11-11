@@ -50,6 +50,12 @@ app.use((req, res) => {
     res.send('Erreur 404 : Page non trouvé...');
 });
 
+app.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500);
+    res.send('Erreur interne du serveur');
+});
+
 app.listen(port, () => {
     console.log(`Server running at ${port} port.`)
 });
