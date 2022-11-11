@@ -17,6 +17,14 @@ router.get('/albums/create', albumController.createAlbumForm);
   */
 router.post('/albums/create', albumController.createAlbum);
 
+/**
+ * Route vers l'affichage d'un album spécifique.
+ */
 router.get('/albums/:id', albumController.album);
+
+/**
+ * Route qui traite l'upload d'une nouvelle image dans un album.
+ */
+router.post('/albums/:id', albumController.addImage);
 
 module.exports = router;

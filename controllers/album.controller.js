@@ -1,4 +1,6 @@
 const Album = require('../models/Album');
+const path = require('path');
+const fs = require('fs');
 
 const albums = async (req, res) => {
     const albums = await Album.find();
@@ -20,6 +22,19 @@ const album = async (req, res) => {
         console.log(err);
         res.redirect('/404');
     }
+};
+
+const addImage = async (req, res) => {
+    const idAlbum = req.params.id;
+    const objectAlbum = await Album.findById(idAlbum);
+    const imageName = req.files.image.name;
+    const folderPath = path.join(__dirname, '../public/uploads', idAlbum);
+    const localPath = path.join(folderPath, imageName);
+    fs.mkdirSync(folderPath, { recursive: true });
+    await req.files.image.mv(localPath);
+    objectAlbum.images.push(imageName);
+    await objectAlbum.save();
+    res.redirect(`/albums/${idAlbum}`);
 };
 
 const createAlbumForm = (req, res) => {
@@ -51,6 +66,7 @@ const createAlbum = async (req, res) => {
 module.exports = {
     albums,
     album,
+    addImage,
     createAlbumForm,
     createAlbum,
 };
