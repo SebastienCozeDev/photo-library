@@ -46,14 +46,26 @@ app.get('/', (req, res) => {
 app.use('/', albumRoute);
 
 app.use((req, res) => {
-    res.status(404);
-    res.send('Erreur 404 : Page non trouvé...');
+    const errorCode = 404;
+    const errorDescription = 'Oups... Il semblerait que cette page n\'existe pas.';
+    res.status(errorCode);
+    res.render('error', {
+        title: `Erreur ${errorCode}`,
+        errorCode,
+        errorDescription,
+    });
 });
 
 app.use((err, req, res, next) => {
+    const errorCode = 500;
+    const errorDescription = 'Oups... Il semblerait qu\'il y ai eu une erreur interne au serveur. Nous vous conseillons de prendre contact avoir l\'administrateur de ce site.';
     console.log(err);
-    res.status(500);
-    res.send('Erreur interne du serveur');
+    res.status(errorCode);
+    res.render('error', {
+        title: `Erreur ${errorCode}`,
+        errorCode,
+        errorDescription,
+    });
 });
 
 app.listen(port, () => {
