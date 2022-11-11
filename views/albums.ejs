@@ -7,7 +7,19 @@
 
 <body>
     <%- include('partials/nav') %>
-        <%- include('partials/scripts') %>
+        <main>
+            <article class="container">
+                <div class="row mt-4">
+                    <div class="col">
+                        <h2>Les albums</h2>
+                        <a class="btn btn-primary mt-2 mb-4" href="/albums/create">
+                            Nouvel album
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </main>
+    <%- include('partials/scripts') %>
 </body>
 
 </html>
