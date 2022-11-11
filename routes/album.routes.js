@@ -25,7 +25,7 @@ router.get('/albums/:id', albumController.album);
 /**
  * Route qui traite la suppression d'un album.
  */
- router.get('/albums/:id/delete/:imageIndex', albumController.deleteAlbum);
+ router.get('/albums/:id/delete', albumController.deleteAlbum);
 
 /**
  * Route qui traite la suppression d'une image.
