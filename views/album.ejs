@@ -22,7 +22,7 @@
                             <h5 class="card-title">Ajouter une image</h5>
                             <form class="form-inline" method="POST" action="/albums/<%= album._id %> " enctype="multipart/form-data">
                                 <input class="form-control-file" name="image" type="file">
-                                <button class="btn btn-primary mt-3" type="submit">Ajouter</button>
+                                <button class="btn btn-primary mt-8" type="submit">Ajouter</button>
                             </form>
                             <% if (errors.length) { %>
                                 <div class="alert alert-danger mt-4 mb-2" role="alert">

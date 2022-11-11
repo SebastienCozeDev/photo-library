@@ -1,5 +1,10 @@
 body {
     background-color: #d4d8f0;
+    color: #232946;
+}
+
+a {
+    color: #232946;
 }
 
 h1 {
@@ -18,4 +23,31 @@ nav#header .btn-primary {
 
 nav#header .btn-primary:hover {
     color: #fffffe;
+}
+
+.card-body {
+    background-color: #fffffe;
+    color: #232946;
+}
+
+.card-body .btn-primary:hover {
+    color: #232946;
+    background-color: #eebbc3;
+    border-color: #eebbc3;
+}
+
+.btn-primary {
+    background-color: #232946;
+    border-color: #232946;
+    color: #fffffe;
+}
+
+.btn-primary:hover {
+    color: #232946;
+    background-color: #fffffe;
+    border-color: #fffffe;
+}
+
+.form-control {
+    background-color: #fffffe;
 }
