@@ -4,6 +4,12 @@ const path = require('path');
 const fs = require('fs');
 const rimraf = require('rimraf');
 
+/**
+ * Number maximum d'octets que peut prendre la taille d'une image.
+ * Ici, on est à 700Mo.
+ */
+const maxOctets = 734003200;
+
 const albums = catchAsync(async (req, res) => {
     const albums = await Album.find();
     res.render('albums', {
@@ -38,6 +44,11 @@ const addImage = catchAsync(async (req, res) => {
     const image = req.files.image;
     if (image.mimetype != 'image/jpeg' && image.mimetype != 'image/png') {
         req.flash('error', 'Seuls les fichiers JPEG et PNG sont accepté.');
+        res.redirect(`/albums/${idAlbum}`);
+        return;
+    }
+    if (image.size > maxOctets) {
+        req.flash('error', 'Le fichier est trop volumineux. Sa taille ne peut pas être plus grande que 70 Mo.');
         res.redirect(`/albums/${idAlbum}`);
         return;
     }
