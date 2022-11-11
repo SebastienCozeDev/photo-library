@@ -1,8 +1,12 @@
 const Album = require('../models/Album');
 const album = require('../models/Album');
 
-const albums = (req, res) => {
-    res.render('albums', { title: 'Les albums' });
+const albums = async (req, res) => {
+    const albums = await Album.find();
+    res.render('albums', {
+        title: 'Les albums',
+        albums,
+    });
 };
 
 const createAlbumForm = (req, res) => {
