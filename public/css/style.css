@@ -1,0 +1,73 @@
+body {
+    background-color: #d4d8f0;
+    color: #232946;
+}
+
+a {
+    color: #232946;
+}
+
+h1 {
+    color: #fffffe;
+}
+
+nav#header {
+    background-color: #232946;
+}
+
+nav#header .btn-primary {
+    background-color: #eebbc3;
+    border-color: #eebbc3;
+    color: #232946;
+}
+
+nav#header .btn-primary:hover {
+    color: #fffffe;
+}
+
+.card-body {
+    background-color: #fffffe;
+    color: #232946;
+}
+
+.card-body .btn-primary:hover {
+    color: #232946;
+    background-color: #eebbc3;
+    border-color: #eebbc3;
+}
+
+.btn-primary {
+    background-color: #232946;
+    border-color: #232946;
+    color: #fffffe;
+}
+
+.btn-primary:hover {
+    color: #232946;
+    background-color: #fffffe;
+    border-color: #fffffe;
+}
+
+.form-control {
+    background-color: #fffffe;
+}
+
+.footer {
+    background-color: #232946;
+    color: #b8c1ec;
+    margin-top: 3rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+.footer a {
+    color: #b8c1ec;
+}
+
+.footer a:hover {
+    color: #fffffe;
+}
+
+.footer .title {
+    color: #fffffe;
+}
