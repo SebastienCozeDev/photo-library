@@ -23,9 +23,12 @@ const album = catchAsync(async (req, res) => {
     try {
         const idAlbum = req.params.id;
         const objectAlbum = await Album.findById(idAlbum);
+        const images = await ImageA.find().where('album').equals(objectAlbum._id);
+        //console.log(images); // TODO A enlever
         res.render('album', {
             title: objectAlbum.title,
             album: objectAlbum,
+            images,
             errors: req.flash('error'),
         });
     } catch (err) {
@@ -63,7 +66,21 @@ const addImage = catchAsync(async (req, res) => {
     }
     fs.mkdirSync(folderPath, { recursive: true });
     await image.mv(localPath);
-    objectAlbum.images.push(imageName);
+    /* Création de l'image dans la base de données */
+    try {
+        await ImageA.create({
+            filename: imageName,
+            size: image.size,
+            typeStr: image.mimetype,
+            name: imageName,
+            album: objectAlbum._id,
+        });
+    } catch (err) {
+        console.log(err);
+        req.flash('error', 'Erreur lors de l\'ajout de l\'image. Si le problème persiste, merci de contacter l\'administrateur du site.');
+        res.redirect(`/albums/${idAlbum}`);
+    }
+    /* =========================================== */
     await objectAlbum.save();
     res.redirect(`/albums/${idAlbum}`);
 });
@@ -96,16 +113,17 @@ const createAlbum = catchAsync(async (req, res) => {
 
 const deleteImage = catchAsync(async (req, res) => {
     const idAlbum = req.params.id;
-    const objectAlbum = await Album.findById(idAlbum);
-    const imageIndex = req.params.imageIndex;
-    const image = objectAlbum.images[imageIndex];
-    const imagePath = path.join(__dirname, '../public/uploads', idAlbum, image);
+    const objectAlbum = await Album.findById(idAlbum); // TODO A enlever
+    const idImage = req.params.idImage;
+    const image = await ImageA.findById(idImage);
+    const images = await ImageA.find().where('album').equals(objectAlbum._id);
+    const imagePath = path.join(__dirname, '../public/uploads', idAlbum, image.filename);
     if (!image) {
         res.redirect(`/albums/${idAlbum}`);
         return;
     }
-    objectAlbum.images.splice(imageIndex, 1);
     await objectAlbum.save();
+    await image.delete();
     fs.unlinkSync(imagePath);
     res.redirect(`/albums/${idAlbum}`);
 });
