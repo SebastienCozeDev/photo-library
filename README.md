@@ -11,3 +11,9 @@ Ce projet consiste en la conception d'une photothèque à l'aide de Node.js avec
 - [express-session](https://www.npmjs.com/package/express-session) permettant de gérer les sessions.
 - [mongoose](https://www.npmjs.com/package/mongoose) étant l'OMD utilisé pour faire la liaison avec la base de données MangoDB.
 - [rimraf](https://www.npmjs.com/package/rimraf) permettant de faire des suppressions récursives de fichiers (comme `rm -rf`).
+
+## Devlogs
+
+### Version 1.0.1 - 17 novembre 2022
+
+Séparation du modèle `Album` en deux : le modèle `Album` et `ImageA`.
