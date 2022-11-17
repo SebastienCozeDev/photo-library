@@ -30,7 +30,7 @@ router.get('/albums/:id', albumController.album);
 /**
  * Route qui traite la suppression d'une image.
  */
-router.get('/albums/:id/delete/:imageIndex', albumController.deleteImage);
+router.get('/albums/:id/delete/:idImage', albumController.deleteImage);
 
 /**
  * Route qui traite l'upload d'une nouvelle image dans un album.

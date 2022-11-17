@@ -1,9 +1,10 @@
 {
   "name": "photo-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This project is an simple photo library.",
   "main": "app.js",
   "scripts": {
+    "dev": "clear & nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
