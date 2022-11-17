@@ -9,11 +9,19 @@ const imageSchema = new mongoose.Schema({
     typeStr: {
         type: String,
         enum: [
-            "PNG",
-            "JPEG",
-            "JPG",
-            "SVG",
-            "GIF",
-            "BMP",
-        ] }
+            'PNG',
+            'JPEG',
+            'JPG',
+            'SVG',
+            'GIF',
+            'BMP',
+        ],
+    },
+    album: {
+        type: mongoose.Types.ObjectId,
+        ref: "Album",
+        required: true,
+    }
 });
+
+module.exports = mongoose.model('Image', imageSchema);
