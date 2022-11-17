@@ -16,7 +16,7 @@ const app = express();
 /**
  * Se connecte à le base de données.
  */
-mongoose.connect('mongodb://localhost/photo-library');
+mongoose.connect('mongodb://localhost:27017/photo-library');
 
 /**
  * Configure l'application.
