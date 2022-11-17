@@ -9,12 +9,8 @@ const imageASchema = new mongoose.Schema({
     typeStr: {
         type: String,
         enum: [
-            'PNG',
-            'JPEG',
-            'JPG',
-            'SVG',
-            'GIF',
-            'BMP',
+            'image/jpeg',
+            'image/png',
         ],
     },
     album: {
