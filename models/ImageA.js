@@ -13,6 +13,7 @@ const imageASchema = new mongoose.Schema({
             'image/png',
         ],
     },
+    name: { type: String, required: true },
     album: {
         type: mongoose.Types.ObjectId,
         ref: "Album",
