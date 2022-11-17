@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 /**
  * Schéma pour une image.
  */
-const imageSchema = new mongoose.Schema({
+const imageASchema = new mongoose.Schema({
     filename: { type: String, required: true },
     size: { type: Number, required: true },
     typeStr: {
@@ -24,4 +24,4 @@ const imageSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Image', imageSchema);
+module.exports = mongoose.model('ImageA', imageASchema);
