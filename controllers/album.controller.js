@@ -1,4 +1,5 @@
 const Album = require('../models/Album');
+const ImageA = require('../models/ImageA');
 const catchAsync = require('../helpers/catchAsync');
 const path = require('path');
 const fs = require('fs');
