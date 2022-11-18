@@ -38,7 +38,9 @@
                 <% images.forEach((image) => { %>
                     <div class="col">
                         <div class="card">
-                            <img class="card-img-top" src="/uploads/<%= album._id %>/<%= image.filename %> " alt="<%= image.filename %>">
+                            <a href="/uploads/<%= album._id %>/<%= image.filename %>" target="_blank" rel="noopener noreferrer">
+                                <img class="card-img-top" src="/uploads/<%= album._id %>/<%= image.filename %>" alt="<%= image.filename %>">
+                            </a>
                             <div class="card-body">
                                 <h5><%= image.name %></h5>
                                 <a href="/albums/<%= album._id %>/delete/<%= image._id %>">Supprimer</a>
