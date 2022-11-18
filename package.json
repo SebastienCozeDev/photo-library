@@ -1,6 +1,6 @@
 {
   "name": "photo-library",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "This project is an simple photo library.",
   "main": "app.js",
   "scripts": {
