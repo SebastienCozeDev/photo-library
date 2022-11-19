@@ -15,7 +15,7 @@ const maxOctets = 734003200;
 
 const albums = catchAsync(async (req, res) => {
     const albums = await Album.find();
-    res.render('albums', {
+    res.render('album/albums', {
         title: 'Les albums',
         albums,
     });
@@ -28,7 +28,7 @@ const album = catchAsync(async (req, res) => {
         const images = await ImageA.find().where('album').equals(objectAlbum._id);
         const creator = await User.findById(objectAlbum.user);
         //console.log(images); // TODO A enlever
-        res.render('album', {
+        res.render('album/album', {
             title: objectAlbum.title,
             album: objectAlbum,
             images,
