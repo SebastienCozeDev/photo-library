@@ -26,11 +26,13 @@ const album = catchAsync(async (req, res) => {
         const idAlbum = req.params.id;
         const objectAlbum = await Album.findById(idAlbum);
         const images = await ImageA.find().where('album').equals(objectAlbum._id);
+        const creator = await User.findById(objectAlbum.user);
         //console.log(images); // TODO A enlever
         res.render('album', {
             title: objectAlbum.title,
             album: objectAlbum,
             images,
+            creator,
             errors: req.flash('error'),
         });
     } catch (err) {
