@@ -74,7 +74,21 @@ const addImage = catchAsync(async (req, res) => {
                 }
                 fs.mkdirSync(folderPath, { recursive: true });
                 fs.writeFileSync(imagePath, Buffer.from(await item.async('arraybuffer')));
-
+                /* Création de l'image dans la base de données */
+                try {
+                    await ImageA.create({
+                        filename: imageName,
+                        size: 0,
+                        typeStr: item.mimetype,
+                        name: imageName,
+                        album: objectAlbum._id,
+                    });
+                } catch (err) {
+                    console.log(err);
+                    req.flash('error', 'Erreur lors de l\'ajout de l\'image. Si le problème persiste, merci de contacter l\'administrateur du site.');
+                    res.redirect(`/albums/${idAlbum}`);
+                }
+                /* =========================================== */
             }
         }
         fs.rmSync(localPath);
