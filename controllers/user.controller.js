@@ -18,13 +18,40 @@ const viewProfile = catchAsync(async (req, res) => {
     }
 });
 
+/**
+ * Permet de voir le formulaire de connexion.
+ */
 const viewLogin = catchAsync(async (req, res) => {
     res.render('user/login', {
         title: "Connexion",
+        errors: req.flash('error'),
     });
+});
+
+/**
+ * Permet à l'utilisateur de se connecter.
+ */
+const loginUser = catchAsync(async (req, res) => {
+    try {
+        if (!req.body.email) {
+            req.flash('error', 'L\'adresse mail est obligatoire pour se connecter.');
+            res.redirect('/users/login');
+            return;
+        } else {
+            // TODO A enlever
+            console.error(err);
+            req.flash('error', 'La connexion est indisponible pour le moment.');
+            res.redirect('/users/login');
+        }
+    } catch (err) {
+        console.error(err);
+        req.flash('error', 'Erreur lors de la connexion.');
+        res.redirect('/users/login');
+    }
 });
 
 module.exports = {
     viewProfile,
     viewLogin,
+    loginUser,
 };
