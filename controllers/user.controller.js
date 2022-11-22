@@ -18,6 +18,13 @@ const viewProfile = catchAsync(async (req, res) => {
     }
 });
 
+const viewLogin = catchAsync(async (req, res) => {
+    res.render('user/login', {
+        title: "Connexion",
+    });
+});
+
 module.exports = {
     viewProfile,
+    viewLogin,
 };
