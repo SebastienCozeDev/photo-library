@@ -12,15 +12,15 @@
                 <div class="col">
                     <h2 class="mb-4"><%= title %></h2>
                     <hr>
-                    <form action="/users/login" method="POST">
+                    <form  method="POST" action="/users/login">
                         <div class="form-group">
-                            <label for="email">Adresse mail</label>
-                            <input type="email" class="form-control" id="email" placeholder="Votre adresse mail">
+                            <label class="form-label" for="email">Adresse mail</label>
+                            <input class="form-control" type="email" id="email" placeholder="Votre adresse mail">
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" class="form-control" id="password" placeholder="Votre mot de passe">
+                            <label class="form-label" for="password">Mot de passe</label>
+                            <input class="form-control" type="password" id="password" placeholder="Votre mot de passe">
                         </div>
                         <% if (errors.length) { %>
                             <br>
@@ -30,7 +30,7 @@
                         <% } %>  
                         <br>
                         <div class="button-is-centered">
-                            <button type="submit" class="btn btn-primary">Se connecter</button>
+                            <button class="btn btn-primary" type="submit">Se connecter</button>
                         </div>
                     </form>
                 </div>
