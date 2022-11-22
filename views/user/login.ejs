@@ -12,7 +12,7 @@
                 <div class="col">
                     <h2 class="mb-4"><%= title %></h2>
                     <hr>
-                    <form action="#" method="POST">
+                    <form action="/users/login" method="POST">
                         <div class="form-group">
                             <label for="email">Adresse mail</label>
                             <input type="email" class="form-control" id="email" placeholder="Votre adresse mail">
@@ -22,6 +22,12 @@
                             <label for="password">Mot de passe</label>
                             <input type="password" class="form-control" id="password" placeholder="Votre mot de passe">
                         </div>
+                        <% if (errors.length) { %>
+                            <br>
+                            <div class="alert alert-danger mt-4 mb-2" role="alert">
+                                <%= errors[0] %> 
+                            </div>
+                        <% } %>  
                         <br>
                         <div class="button-is-centered">
                             <button type="submit" class="btn btn-primary">Se connecter</button>
@@ -31,7 +37,6 @@
             </div>
         </article>
     </main>
-    <%- include('../partials/footer') %>
     <%- include('../partials/scripts') %>
 </body>
 </html>

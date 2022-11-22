@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+    <main class="content">
+        <article class="container">
+            <div class="row mt-4">
+                <div class="col">
+                    <h2 class="mb-4"><%= user.nickname %></h2>
+                    <hr>
+                    <% if (user.mailAddress) {%>
+                        <i class="m-4"><a href="mailto:<%= user.mailAddress %>"><%= user.mailAddress %></a></i>
+                    <% } %>
+                    <% if (user.personalWebsite) {%>
+                        <i class="m-4"><a href="<%= user.personalWebsite %>" target="_blank" rel="noopener noreferrer">Site personnel</a></i>
+                    <% } %>
+                </div>
+            </div>
+        </article>
+    </main>
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>
