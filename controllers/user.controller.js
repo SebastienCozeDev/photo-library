@@ -37,6 +37,10 @@ const loginUser = catchAsync(async (req, res) => {
             req.flash('error', 'L\'adresse mail est obligatoire pour se connecter.');
             res.redirect('/users/login');
             return;
+        } else if (!req.body.password) {
+            req.flash('error', 'Le mot de passe est obligatoire pour se connecter.');
+            res.redirect('/users/login');
+            return;
         } else {
             // TODO A enlever
             console.error(err);
@@ -46,7 +50,7 @@ const loginUser = catchAsync(async (req, res) => {
     } catch (err) {
         console.error(err);
         req.flash('error', 'Erreur lors de la connexion.');
-        res.redirect('/users/login');
+        res.redirect('/login');
     }
 });
 
