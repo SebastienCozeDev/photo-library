@@ -130,7 +130,7 @@ const addImage = catchAsync(async (req, res) => {
 });
 
 const createAlbumForm = (req, res) => {
-    res.render('new-album', {
+    res.render('album/new-album', {
         title: 'Nouvel album',
         errors: req.flash('error'),
     });
