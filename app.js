@@ -5,6 +5,7 @@ const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const path = require('path');
 const albumRoute = require('./routes/album.routes');
+const userRoute = require('./routes/user.routes');
 
 /**
  * Correspond au port d'écoute.
@@ -44,6 +45,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', albumRoute);
+app.use('/users', userRoute);
 
 app.use((req, res) => {
     const errorCode = 404;
