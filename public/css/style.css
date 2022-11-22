@@ -71,3 +71,7 @@ nav#header .btn-primary:hover {
 .footer .title {
     color: #fffffe;
 }
+
+.button-is-centered {
+    text-align: center;
+}
