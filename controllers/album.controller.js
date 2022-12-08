@@ -146,7 +146,7 @@ const createAlbum = catchAsync(async (req, res) => {
         }
         await Album.create({
             title: req.body.albumTitle,
-            user: '6378dc61819dae6bb95a6f15',
+            user: '6391a3987ae53bad4a231a5c',
         });
         res.redirect('/albums');
     } catch (err) {
