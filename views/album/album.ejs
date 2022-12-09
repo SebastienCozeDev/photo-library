@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+    <main class="content">
+        <article class="container">
+            <div class="row mt-4">
+                <div class="col">
+                    <a class="mb-4" href="/albums">&lt; Retour</a>
+                    <h2 class="mb-4"><%= album.title %> </h2>
+                    <i>Créé par <a href="/users/<%= creator._id %>"><%= creator.nickname %></a> </i>
+                </div>
+            </div>
+            <br>
+            <% if (isOwner) { %>
+                <div class="row mt-4">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Ajouter une image</h5>
+                                <form class="form-inline" method="POST" action="/albums/<%= album._id %> " enctype="multipart/form-data">
+                                    <input class="form-control-file" name="image" type="file">
+                                    <button class="btn btn-primary mt-8" type="submit">Ajouter</button>
+                                </form>
+                                <% if (errors.length) { %>
+                                    <div class="alert alert-danger mt-4 mb-2" role="alert">
+                                        <%= errors[0] %> 
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            <% } %>
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                <% images.forEach((image) => { %>
+                    <div class="col">
+                        <div class="card">
+                            <a href="/uploads/<%= album._id %>/<%= image.filename %>" target="_blank" rel="noopener noreferrer">
+                                <img class="card-img-top" src="/uploads/<%= album._id %>/<%= image.filename %>" alt="<%= image.filename %>">
+                            </a>
+                            <div class="card-body">
+                                <h5><%= image.name %></h5>
+                                <% if (isOwner) { %>
+                                    <a href="/albums/<%= album._id %>/delete/<%= image._id %>">Supprimer</a>
+                                <% } %> 
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>  
+            </div>
+        </article>
+    </main>
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+</body>
+
+</html>

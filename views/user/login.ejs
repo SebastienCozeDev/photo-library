@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+    <main class="content">
+        <article class="container">
+            <div class="row mt-4">
+                <div class="col">
+                    <h2 class="mb-4"><%= title %></h2>
+                    <hr>
+                    <form  method="POST" action="/users/login">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Adresse mail</label>
+                            <input class="form-control" type="email" id="email" placeholder="Votre adresse mail">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="form-label" for="password">Mot de passe</label>
+                            <input class="form-control" type="password" id="password" placeholder="Votre mot de passe">
+                        </div>
+                        <% if (errors.length) { %>
+                            <br>
+                            <div class="alert alert-danger mt-4 mb-2" role="alert">
+                                <%= errors[0] %> 
+                            </div>
+                        <% } %>  
+                        <br>
+                        <div class="button-is-centered">
+                            <button class="btn btn-primary" type="submit">Se connecter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </article>
+    </main>
+    <%- include('../partials/scripts') %>
+</body>
+</html>

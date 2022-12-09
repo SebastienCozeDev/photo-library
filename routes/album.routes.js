@@ -5,7 +5,7 @@ const albumController = require('../controllers/album.controller');
 /**
  * Route vers la liste des albums.
  */
-router.get('/albums', albumController.albums),
+router.get('/albums', albumController.albums);
 
 /**
  * Route vers la création d'un album.

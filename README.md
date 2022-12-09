@@ -9,5 +9,6 @@ Ce projet consiste en la conception d'une photothèque à l'aide de Node.js avec
 - [express](https://www.npmjs.com/package/express) étant le framework utilisé.
 - [express-fileupload](https://www.npmjs.com/package/express-fileupload) permettant de gérer les uploads.
 - [express-session](https://www.npmjs.com/package/express-session) permettant de gérer les sessions.
+- [jszip](https://www.npmjs.com/package/jszip) permettant de zipper ou dézipper des fichiers.
 - [mongoose](https://www.npmjs.com/package/mongoose) étant l'OMD utilisé pour faire la liaison avec la base de données MangoDB.
 - [rimraf](https://www.npmjs.com/package/rimraf) permettant de faire des suppressions récursives de fichiers (comme `rm -rf`).

@@ -5,6 +5,7 @@ const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const path = require('path');
 const albumRoute = require('./routes/album.routes');
+const userRoute = require('./routes/user.routes');
 
 /**
  * Correspond au port d'écoute.
@@ -16,7 +17,7 @@ const app = express();
 /**
  * Se connecte à le base de données.
  */
-mongoose.connect('mongodb://localhost:27017/photo-library');
+mongoose.connect('mongodb+srv://photo-library:Sc22122002@sebastien-coze.gt0crxq.mongodb.net/?retryWrites=true&w=majority');
 
 /**
  * Configure l'application.
@@ -44,6 +45,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', albumRoute);
+app.use('/users', userRoute);
 
 app.use((req, res) => {
     const errorCode = 404;
