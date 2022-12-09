@@ -2,7 +2,7 @@
 
 Ce projet consiste en la conception d'une photothèque à l'aide de Node.js avec le framework Express.js. Le projet est structure en MVC (Models-Vues-Controller).
 
-Cette photothèque contient des albums qui contiennent eux-mêmes, des photographies. Les albums peuvent être librement supprimés par le créateur de celui-ci. Dans chacun de leurs albums, les créateurs peuvent uploader et supprimer leurs propres photographies. Ils peuvent aussi créer des albums.
+Cette photothèque contient des albums qui contiennent, eux-mêmes, des photographies. Les albums peuvent être librement supprimés par le créateur de celui-ci. Dans chacun de leurs albums, les créateurs peuvent uploader et supprimer leurs propres photographies. Ils peuvent aussi créer des albums.
 
 A l'arrivé sur l'application, l'utilisateur est représenté par le compte de "testeur anonyme".
 
