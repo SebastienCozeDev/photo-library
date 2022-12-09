@@ -13,6 +13,8 @@ const rimraf = require('rimraf');
  */
 const maxOctets = 734003200;
 
+const testId = '6391a3987ae53bad4a231a5c';
+
 const albums = catchAsync(async (req, res) => {
     const albums = await Album.find();
     res.render('album/albums', {
@@ -27,12 +29,14 @@ const album = catchAsync(async (req, res) => {
         const objectAlbum = await Album.findById(idAlbum);
         const images = await ImageA.find().where('album').equals(objectAlbum._id);
         const creator = await User.findById(objectAlbum.user);
+        const isOwner = objectAlbum.user == testId
         //console.log(images); // TODO A enlever
         res.render('album/album', {
             title: objectAlbum.title,
             album: objectAlbum,
             images,
             creator,
+            isOwner,
             errors: req.flash('error'),
         });
     } catch (err) {
@@ -146,7 +150,7 @@ const createAlbum = catchAsync(async (req, res) => {
         }
         await Album.create({
             title: req.body.albumTitle,
-            user: '6391a3987ae53bad4a231a5c',
+            user: testId,
         });
         res.redirect('/albums');
     } catch (err) {
