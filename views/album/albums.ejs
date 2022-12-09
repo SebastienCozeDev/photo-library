@@ -30,6 +30,11 @@
             </article>
         </main>
         <%- include('../partials/footer') %>
+    <% if (typeof alertMessage == 'boolean') { %>
+        <script>
+            alert('Cet album ne vous appartient pas. Vous ne pouvez donc pas le supprimer.');
+        </script>
+    <% } %>  
     <%- include('../partials/scripts') %>
 </body>
 

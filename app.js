@@ -17,7 +17,7 @@ const app = express();
 /**
  * Se connecte à le base de données.
  */
-mongoose.connect('mongodb+srv://photo-library:Sc22122002@sebastien-coze.gt0crxq.mongodb.net/?retryWrites=true&w=majority'); // mongodb+srv://photo-library:Sc22122002@sebastien-coze.gt0crxq.mongodb.net/?retryWrites=true&w=majority
+mongoose.connect('mongodb+srv://photo-library:Sc22122002@sebastien-coze.gt0crxq.mongodb.net/?retryWrites=true&w=majority');
 
 /**
  * Configure l'application.

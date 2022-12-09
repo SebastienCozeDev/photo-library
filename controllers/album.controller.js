@@ -30,7 +30,6 @@ const album = catchAsync(async (req, res) => {
         const images = await ImageA.find().where('album').equals(objectAlbum._id);
         const creator = await User.findById(objectAlbum.user);
         const isOwner = objectAlbum.user == testId
-        //console.log(images); // TODO A enlever
         res.render('album/album', {
             title: objectAlbum.title,
             album: objectAlbum,
@@ -162,7 +161,7 @@ const createAlbum = catchAsync(async (req, res) => {
 
 const deleteImage = catchAsync(async (req, res) => {
     const idAlbum = req.params.id;
-    const objectAlbum = await Album.findById(idAlbum); // TODO A enlever
+    const objectAlbum = await Album.findById(idAlbum);
     const idImage = req.params.idImage;
     const image = await ImageA.findById(idImage);
     const images = await ImageA.find().where('album').equals(objectAlbum._id);
@@ -179,11 +178,22 @@ const deleteImage = catchAsync(async (req, res) => {
 
 const deleteAlbum = catchAsync(async (req, res) => {
     const idAlbum = req.params.id;
-    const albumPath = path.join(__dirname, '../public/uploads', idAlbum);
-    await Album.findByIdAndDelete(idAlbum);
-    rimraf(albumPath, () => {
-        res.redirect('/albums');
-    });
+    const objectAlbum = await Album.findById(idAlbum);
+    if (objectAlbum.user == testId) {
+        const albumPath = path.join(__dirname, '../public/uploads', idAlbum);
+        await Album.findByIdAndDelete(idAlbum);
+        rimraf(albumPath, () => {
+            res.redirect('/albums');
+        });
+    } else {
+        const albums = await Album.find();
+        const alertMessage = '';
+        res.render('album/albums', {
+            title: 'Les albums',
+            albums,
+            alertMessage: true,
+        });
+    }
 });
 
 module.exports = {

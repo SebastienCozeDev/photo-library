@@ -16,6 +16,7 @@
                     <i>Créé par <a href="/users/<%= creator._id %>"><%= creator.nickname %></a> </i>
                 </div>
             </div>
+            <br>
             <% if (isOwner) { %>
                 <div class="row mt-4">
                     <div class="col">
@@ -36,7 +37,7 @@
                     </div>
                 </div>
                 <br>
-            <% } %>  
+            <% } %>
             <div class="row row-cols-1 row-cols-md-4 g-4">
                 <% images.forEach((image) => { %>
                     <div class="col">
@@ -46,7 +47,9 @@
                             </a>
                             <div class="card-body">
                                 <h5><%= image.name %></h5>
-                                <a href="/albums/<%= album._id %>/delete/<%= image._id %>">Supprimer</a>
+                                <% if (isOwner) { %>
+                                    <a href="/albums/<%= album._id %>/delete/<%= image._id %>">Supprimer</a>
+                                <% } %> 
                             </div>
                         </div>
                     </div>
